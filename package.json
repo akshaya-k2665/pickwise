@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "install:all": "cd client && npm install && cd ../server && npm install",
-    "build:client": "cd client && npm install && npm run build && cd ../server && npm install",
-    "build": "npm run build:client",
+    "build": "cd client && npm install && npm run build && cd ../server && npm install",
     "start": "node server/server.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "vite": "^7.0.6"
   }
 }
