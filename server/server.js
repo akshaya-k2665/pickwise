@@ -177,15 +177,15 @@ if (!MONGO_URI) {
 }
 
 /* =====================================================
-   ✅ Serve React frontend (for Render)
+   ✅ Serve React frontend (Vite build for Render)
    ===================================================== */
-const clientBuildPath = path.join(__dirname, "..", "client", "build");
-app.use(express.static(clientBuildPath));
+const clientDistPath = path.join(__dirname, "..", "client", "dist");
+app.use(express.static(clientDistPath));
 
-// Send all non-API routes to React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(clientBuildPath, "index.html"));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(clientDistPath, "index.html"));
 });
+
 
 /* =====================================================
    🚀 SERVER LISTENER
