@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const path = require("path"); // ✅ Added for Render deployment
-require("dotenv").config({ path: __dirname + "/.env" });
+const dotenv = require("dotenv");
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 console.log("🔍 Mongo URI loaded:", process.env.MONGODB_URI);
 
 
