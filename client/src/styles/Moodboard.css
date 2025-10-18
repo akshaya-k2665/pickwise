@@ -1,0 +1,143 @@
+/* ==============================
+   Moodboard.css (Updated)
+   Transparent + Video Background
+   ============================== */
+
+/* 🎬 Moodboard Page Styling */
+.moodboard-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  background: transparent !important; /* remove dark overlay */
+  backdrop-filter: none !important;
+  padding: 2rem;
+  animation: fadeIn 1s ease-in-out;
+  position: relative;
+  z-index: 2; /* ensure content stays above the video */
+}
+
+/* ✨ Title */
+.moodboard-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+.moodboard-title span {
+  color: #7c8df7;
+}
+
+/* 🧩 Grid Layout */
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  justify-items: center;
+}
+
+/* 🎭 Mood Cards (Glassy + Hover Glow) */
+.mood-card {
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1); /* subtle transparent layer */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.mood-card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 20px var(--mood-color);
+  border-color: var(--mood-color);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 😍 Emoji */
+.emoji {
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.mood-card:hover .emoji {
+  transform: scale(1.2);
+}
+
+/* 💬 Mood Name */
+.mood-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* 🌈 Hover Glow Border */
+.mood-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--mood-color), transparent, var(--mood-color));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mood-card:hover::after {
+  opacity: 1;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .moodboard-title {
+    font-size: 2rem;
+  }
+
+  .mood-card {
+    width: 130px;
+    height: 130px;
+  }
+
+  .emoji {
+    font-size: 2.3rem;
+  }
+
+  .mood-name {
+    font-size: 1rem;
+  }
+}
+
+/* ✨ Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

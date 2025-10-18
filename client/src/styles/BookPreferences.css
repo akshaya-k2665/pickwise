@@ -1,0 +1,138 @@
+/* ==============================
+   BookPreferences.css (Updated)
+   Transparent + Video Background
+   ============================== */
+
+.book-preferences-container {
+  padding: 40px;
+  text-align: center;
+  color: white;
+  background: transparent !important; /* Remove solid background */
+  backdrop-filter: none !important;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2; /* keep above video */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🏷️ Page Title */
+.page-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+.icon {
+  color: #58a6ff;
+}
+
+/* 🧩 Grid Layout */
+.book-options-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* 📘 Option Card (Glassy Style) */
+.option-card {
+  background: rgba(22, 27, 34, 0.55); /* transparent dark glass */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 25px;
+  width: 300px;
+  transition: 0.3s;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.option-card:hover {
+  transform: scale(1.05);
+  background: rgba(35, 40, 50, 0.65);
+  box-shadow: 0 6px 20px rgba(35, 134, 54, 0.4);
+}
+
+/* 🎭 Genre Select Dropdown */
+.genre-select {
+  padding: 10px;
+  width: 80%;
+  margin: 15px 0;
+  border-radius: 8px;
+  background: rgba(13, 17, 23, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  outline: none;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.genre-select:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+}
+
+/* 💚 Recommend Button */
+.recommend-btn {
+  background: #238636;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(35, 134, 54, 0.4);
+}
+
+.recommend-btn:hover {
+  background: #2ea043;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(35, 134, 54, 0.6);
+}
+
+/* ❤️ Wishlist Card Highlight */
+.wishlist-card {
+  border: 1px solid #ff4971;
+  box-shadow: 0 0 16px rgba(255, 73, 113, 0.3);
+}
+
+.heart-icon {
+  color: #ff4971;
+  margin-right: 8px;
+}
+
+/* ✨ Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .book-options-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .option-card {
+    width: 90%;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+}

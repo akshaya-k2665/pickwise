@@ -1,0 +1,186 @@
+.recommendation-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+  width: 220px;
+}
+
+.recommendation-card:hover {
+  transform: scale(1.05);
+}
+
+.poster {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.feedback-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.like-btn,
+.dislike-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #e0e0e0;
+  transition: 0.3s;
+}
+
+.like-btn:hover {
+  background-color: #a5d6a7;
+}
+.dislike-btn:hover {
+  background-color: #ef9a9a;
+}
+
+.like-btn.active {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.dislike-btn.active {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.watch-info {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+}
+/* ✍️ Review Section Styles */
+.review-box {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  resize: vertical;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+}
+
+.review-box::placeholder {
+  color: #bbb;
+}
+
+.review-submit {
+  margin-top: 8px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.review-submit:hover {
+  background-color: #2980b9;
+}
+
+.feedback-message {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+/* 👇 Toggle Button for showing/hiding reviews */
+.toggle-reviews {
+  background-color: transparent;
+  border: 1px solid #3498db;
+  color: #3498db;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease-in-out;
+}
+
+.toggle-reviews:hover {
+  background-color: #3498db;
+  color: white;
+}
+
+/* 📋 Reviews Section */
+.reviews-section {
+  text-align: left;
+  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  color: #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.reviews-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reviews-section::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.reviews-section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: white;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 4px;
+}
+
+.reviews-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reviews-section li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 0;
+}
+
+.review-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.review-meta {
+  font-size: 0.8rem;
+  color: #aaa;
+  display: block;
+  margin-top: 2px;
+}
+
+.no-reviews {
+  color: #bbb;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  text-align: center;
+}

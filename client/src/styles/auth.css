@@ -1,0 +1,131 @@
+/* ==============================
+   Auth.css (Updated)
+   Transparent + Video Background
+   ============================== */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: transparent !important; /* removes the dark overlay */
+  color: #fff;
+  position: relative;
+  z-index: 2; /* keep above video */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 🧱 Auth Box (Glassy Style) */
+.auth-box {
+  background: rgba(24, 24, 24, 0.55); /* translucent dark tone */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.auth-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+}
+
+/* 🎬 Title */
+.auth-box h2 {
+  color: #e50914;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
+}
+
+/* ✍️ Input Fields */
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  background: rgba(40, 40, 40, 0.5);
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.auth-box input:focus {
+  border: 2px solid #e50914;
+  background: rgba(20, 20, 20, 0.6);
+  box-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+}
+
+/* 🔘 Auth Button */
+.auth-btn {
+  background: linear-gradient(135deg, #e50914, #f40612);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 15px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.3);
+}
+
+.auth-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(229, 9, 20, 0.5);
+}
+
+/* 🔻 Footer Text */
+.auth-footer {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #bbb;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.auth-footer a {
+  color: #e50914;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+  text-shadow: 0 2px 8px rgba(229, 9, 20, 0.5);
+}
+
+/* ✨ Subtle Entrance Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 600px) {
+  .auth-box {
+    width: 90%;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .auth-box h2 {
+    font-size: 1.6rem;
+  }
+}

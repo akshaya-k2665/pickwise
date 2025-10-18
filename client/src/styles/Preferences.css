@@ -1,0 +1,176 @@
+/* ==============================
+   Preferences.css (Updated)
+   ============================== */
+
+/* Transparent main container — lets the background video show through */
+.preferences-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: transparent !important; /* remove black gradient */
+  padding: 20px;
+  color: #fff;
+  position: relative;
+  z-index: 2; /* keep above video */
+}
+
+/* ==============================
+   Glassmorphic Card
+   ============================== */
+.preferences-card {
+  background: rgba(24, 24, 24, 0.55); /* transparent glass effect */
+  backdrop-filter: blur(12px); /* subtle blur over video */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 32px;
+  border-radius: 16px;
+  width: 500px;
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* ==============================
+   Titles
+   ============================== */
+.preferences-card h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.preferences-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #ddd;
+}
+
+/* ==============================
+   Genre Chips
+   ============================== */
+.genre-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.genre-item {
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(44, 44, 44, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  color: #ccc;
+}
+
+.genre-item:hover {
+  background: rgba(229, 9, 20, 0.2);
+  color: #fff;
+}
+
+.genre-item.selected {
+  background: #e50914;
+  color: #fff;
+  border-color: #e50914;
+}
+
+/* ==============================
+   Dropdown
+   ============================== */
+.preferences-card select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(34, 34, 34, 0.5);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.preferences-card select:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.3);
+}
+
+/* ==============================
+   Textarea
+   ============================== */
+.preferences-card textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(34, 34, 34, 0.5);
+  color: #fff;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+  margin-bottom: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.preferences-card textarea:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.3);
+}
+
+/* ==============================
+   Submit Button
+   ============================== */
+.preferences-card button {
+  width: 100%;
+  padding: 12px;
+  background: #e50914;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.preferences-card button:hover {
+  background: #b20710;
+}
+
+/* ==============================
+   Toast Notifications
+   ============================== */
+.toast-success {
+  background: #28a745 !important;
+  color: #fff !important;
+}
+.toast-error {
+  background: #e50914 !important;
+  color: #fff !important;
+}
+
+/* ==============================
+   Fade-in Animation
+   ============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,121 @@
+/* ==============================
+   ChooseCategory.css (Updated)
+   ============================== */
+
+.choose-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: transparent !important; /* no black overlay */
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 2; /* ensure above video */
+}
+
+.choose-title {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* ==============================
+   Cards Layout
+   ============================== */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.category-card {
+  background: rgba(18, 18, 18, 0.55); /* translucent card */
+  backdrop-filter: blur(12px); /* glassy effect */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 260px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.category-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: rgba(40, 40, 40, 0.7);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* ==============================
+   Card Content
+   ============================== */
+.category-card h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.category-card p {
+  color: #d0d0d0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-card:hover .card-icon {
+  transform: scale(1.2);
+}
+
+/* Icon color themes */
+.movie-icon {
+  color: #a259ff;
+}
+
+.book-icon {
+  color: #00c49a;
+}
+
+.music-icon {
+  color: #ff7f50;
+}
+
+/* ==============================
+   Responsive layout
+   ============================== */
+@media (max-width: 768px) {
+  .card-grid {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .category-card {
+    width: 90%;
+  }
+}
+
+/* ==============================
+   Optional fade-in animation
+   ============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-card {
+  animation: fadeIn 0.8s ease-in-out;
+}

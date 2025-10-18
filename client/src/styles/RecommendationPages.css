@@ -1,0 +1,56 @@
+.recommendations-container {
+  padding: 3rem;
+  color: white;
+  text-align: center;
+}
+
+.recommendation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.recommendation-card {
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.recommendation-card:hover {
+  transform: scale(1.05);
+  background: rgba(50, 50, 50, 0.95);
+}
+
+.recommendation-img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.recommendation-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #00bfff;
+}
+
+.recommendation-info p {
+  color: #ccc;
+  font-size: 0.95rem;
+  margin: 0.3rem 0;
+}
+
+.preview-audio {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+.loading-text, .empty-text {
+  font-size: 1.2rem;
+  color: #bbb;
+  text-align: center;
+  margin-top: 2rem;
+}

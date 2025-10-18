@@ -1,0 +1,229 @@
+/* ==============================
+   Mood.css (Stable + Clean Layout)
+   ============================== */
+
+/* 🌙 Main Container */
+.mood-movies-container {
+  padding: 2rem;
+  min-height: 100vh;
+  text-align: center;
+  background: transparent !important;
+  color: #f4f4f4;
+  animation: fadeIn 0.8s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+/* 🎬 Header Section */
+.mood-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.mood-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #6f7ff7;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* 🔄 Refresh Button */
+.refresh-btn {
+  background: linear-gradient(90deg, #6f7ff7, #9575cd);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.7rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 0 10px rgba(111, 127, 247, 0.4);
+}
+
+.refresh-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(111, 127, 247, 0.6);
+}
+
+.refresh-btn:disabled {
+  background: #777;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* ✨ Subtle Refresh Glow (no rotation) */
+.refreshing {
+  background: linear-gradient(90deg, #7c4dff, #6f7ff7);
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(111, 127, 247, 0.7);
+}
+
+/* 🎥 Movie Grid */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.8rem;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 🎬 Movie Card */
+.movie-card {
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 180px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(111, 127, 247, 0.5);
+  background: rgba(40, 40, 40, 0.65);
+}
+
+/* 🖼️ Poster */
+.movie-poster {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-bottom: 2px solid #6f7ff7;
+}
+
+/* 🧾 Info Section */
+.movie-info {
+  padding: 0.8rem;
+  color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* 🏷️ Title + Year */
+.movie-info h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0.4rem 0 0.2rem;
+  color: #fff;
+  line-height: 1.3;
+  white-space: normal;          /* Allow multiple lines */
+  word-wrap: break-word;        /* Break long titles if needed */
+  overflow: hidden;             /* Keep it inside card bounds */
+  text-align: center;           /* Center-align text */
+  max-height: 2.6em;            /* Limit to ~2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;        /* Show only 2 lines */
+  -webkit-box-orient: vertical; /* Apply multi-line truncation */
+}
+
+
+.movie-info p {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin: 0;
+}
+
+/* ⭐ Rating */
+.movie-rating {
+  font-size: 0.9rem;
+  color: gold;
+  font-weight: bold;
+}
+
+/* 🎞 Trailer Button */
+.trailer-btn {
+  margin-top: 0.3rem;
+  color: #6f7ff7;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.trailer-btn:hover {
+  text-decoration: underline;
+}
+
+.no-trailer {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+/* 📺 Watch Providers */
+.watch-providers-list {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.watch-text {
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-bottom: 0.2rem;
+}
+
+.watch-pill {
+  background: rgba(111, 127, 247, 0.25);
+  border: 1px solid rgba(111, 127, 247, 0.5);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  color: #bfc8ff;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.watch-pill:hover {
+  background: rgba(111, 127, 247, 0.5);
+  color: white;
+}
+
+/* 🌀 Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .movie-card {
+    width: 150px;
+  }
+  .movie-poster {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-card {
+    width: 130px;
+  }
+  .movie-poster {
+    height: 200px;
+  }
+  .movie-info h3 {
+    font-size: 0.85rem;
+  }
+}

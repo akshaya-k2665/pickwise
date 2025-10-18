@@ -1,0 +1,158 @@
+/* ==============================
+   Wishlist.css (Updated)
+   Transparent + Video Background
+   ============================== */
+
+.wishlist-page-container {
+  padding: 40px;
+  color: white;
+  background: transparent !important; /* Remove dark overlay */
+  backdrop-filter: none !important;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2; /* ensure content above video */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* 💖 Heading */
+.wishlist-heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.heart-icon {
+  color: #ff4971;
+  margin-right: 10px;
+}
+
+/* 📭 Empty State */
+.empty-text {
+  text-align: center;
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-top: 40px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 🧱 Wishlist Grid */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
+}
+
+/* 💌 Wishlist Card (Glassy) */
+.wishlist-card {
+  background: rgba(22, 27, 34, 0.55); /* translucent layer */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease-in-out;
+  width: 95%;
+  max-width: 600px;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(35, 40, 50, 0.65);
+  box-shadow: 0 6px 20px rgba(255, 73, 113, 0.4);
+}
+
+/* 📘 Wishlist Cover */
+.wishlist-cover {
+  width: 100px;
+  height: 140px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+}
+
+.wishlist-card:hover .wishlist-cover {
+  transform: scale(1.05);
+}
+
+/* 🧾 Info Section */
+.wishlist-info {
+  flex: 1;
+}
+
+.wishlist-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.author {
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+/* ❌ Remove Button */
+.remove-btn {
+  background: #ff4971;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(255, 73, 113, 0.3);
+}
+
+.remove-btn:hover {
+  background: #ff5c8d;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(255, 92, 141, 0.5);
+}
+
+/* ✨ Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 768px) {
+  .wishlist-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  .wishlist-cover {
+    width: 120px;
+    height: 160px;
+  }
+
+  .wishlist-info h3 {
+    font-size: 1rem;
+  }
+
+  .wishlist-heading {
+    font-size: 1.6rem;
+  }
+}

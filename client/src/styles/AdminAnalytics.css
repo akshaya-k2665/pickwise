@@ -1,0 +1,72 @@
+/* p4/client/src/styles/AdminAnalytics.css */
+
+.analytics-page {
+  padding: 2rem;
+  color: var(--text-primary);
+}
+
+.analytics-back {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.analytics-back:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.analytics-title {
+  text-align: center;
+  margin: 12px 0 24px;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+}
+
+.analytics-error {
+  color: #ff6b6b;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.glass-card {
+  background: rgba(24, 24, 24, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 18px 18px 8px 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.card-title {
+  font-size: 1.05rem;
+  margin: 0 0 10px 4px;
+  color: var(--text-primary);
+}
+
+.chart-wrap {
+  width: 100%;
+  height: 280px;
+}

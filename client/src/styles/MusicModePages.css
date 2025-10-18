@@ -1,0 +1,365 @@
+/* ==============================
+   MusicMode.css (Updated)
+   Transparent + Video Background
+   ============================== */
+
+.music-mode-page {
+  padding: 40px;
+  background: transparent !important; /* remove dark overlay */
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2; /* above video */
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Remove unnecessary overlay */
+.music-mode-page::before {
+  display: none;
+}
+
+/* 🎵 Main Heading */
+.music-mode-page h1 {
+  margin-bottom: 15px;
+  font-size: 2.2rem;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+.music-mode-page p {
+  color: #ddd;
+  font-size: 1.1rem;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* 🎧 Main Cards Layout */
+.music-mode-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* 🎶 Music Mode Card (Glassy Style) */
+.music-mode-card {
+  background: rgba(12, 12, 12, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  height: 200px;
+  margin: 10px;
+  box-shadow: 0 4px 20px rgba(29, 185, 84, 0.4);
+  border: 1px solid rgba(29, 185, 84, 0.3);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.music-mode-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px rgba(29, 185, 84, 0.6);
+  background: rgba(20, 20, 20, 0.65);
+}
+
+.music-mode-card h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.music-mode-card p {
+  color: #ccc;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* 🪄 Shared Card Style */
+.track-card,
+.blend-card,
+.request-item,
+.blend-tabs button {
+  background: rgba(15, 15, 15, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Hover Glow */
+.track-card:hover,
+.request-item:hover,
+.blend-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+/* Buttons */
+button {
+  background: #1db954;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
+}
+
+button:hover {
+  background: #1ed760;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(29, 185, 84, 0.5);
+}
+
+/* 🧩 Blend Form */
+.blend-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.blend-form input {
+  padding: 10px;
+  width: 320px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 20, 20, 0.5);
+  color: white;
+  outline: none;
+  backdrop-filter: blur(8px);
+}
+
+.blend-form button {
+  width: 200px;
+  background: #1db954;
+  border-radius: 8px;
+}
+
+.blend-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.blend-tabs button {
+  background: rgba(17, 17, 17, 0.6);
+  color: #fff;
+  border: 1px solid #1db954;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.blend-tabs button.active {
+  background: #1db954;
+  color: #000;
+}
+
+/* Blend container */
+.blend-card {
+  padding: 25px;
+  border-radius: 10px;
+  width: 450px;
+  margin: 0 auto 30px auto;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.3);
+}
+
+/* Blend requests */
+.blend-requests {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.request-item {
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #ddd;
+  line-height: 1.4;
+  transition: all 0.3s ease-in-out;
+}
+
+.request-item.accepted {
+  background: rgba(9, 37, 9, 0.6);
+  border: 1px solid #1db954;
+}
+
+.request-item.pending {
+  background: rgba(20, 20, 20, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blend-status {
+  color: #1db954;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* 🎤 Artist Page */
+.artist-page {
+  text-align: center;
+  color: #fff;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: transparent !important;
+  backdrop-filter: none;
+  position: relative;
+  z-index: 2;
+}
+
+.artist-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0 35px 0;
+}
+
+.artist-btn {
+  background: #1db954;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
+}
+
+.artist-btn:hover {
+  transform: scale(1.05);
+  background: #1ed760;
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.5);
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
+.search-box input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(20, 20, 20, 0.5);
+  color: white;
+  outline: none;
+  backdrop-filter: blur(8px);
+}
+
+/* 📈 Popularity Page */
+.popularity-page {
+  text-align: center;
+  color: #fff;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  position: relative;
+  z-index: 2;
+}
+
+.popularity-controls {
+  margin: 20px auto 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.popularity-controls select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(20, 20, 20, 0.5);
+  color: white;
+  outline: none;
+  backdrop-filter: blur(8px);
+}
+
+.track-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  margin-top: 30px;
+  padding: 0 30px;
+}
+
+/* 🎵 Track Card (Glassy) */
+.track-card {
+  background: rgba(15, 15, 15, 0.55);
+  padding: 12px;
+  border-radius: 10px;
+  width: 220px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(29, 185, 84, 0.5);
+}
+
+.track-card img {
+  width: 100%;
+  height: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.track-card p {
+  font-size: 1rem;
+  color: #fff;
+  margin-top: 10px;
+}
+
+.track-card small {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Refresh Button */
+.refresh-btn {
+  margin: 10px 0;
+  background-color: #1db954;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(29, 185, 84, 0.3);
+}
+
+.refresh-btn:hover {
+  background-color: #17a64a;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(29, 185, 84, 0.5);
+}
+
+/* ✨ Fade Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

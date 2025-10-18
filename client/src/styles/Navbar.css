@@ -1,0 +1,117 @@
+/* Navbar container
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e50914;
+  text-decoration: none;
+  text-shadow: 0 0 8px rgba(229, 9, 20, 0.6);
+}
+
+/* Navigation links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.navbar-links a:hover {
+  color: #e50914;
+  text-shadow: 0 0 6px rgba(229, 9, 20, 0.6);
+}
+
+/* Auth buttons (Login / Signup) */
+.navbar-auth {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.navbar-auth a {
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.navbar-auth .login-btn {
+  background: transparent;
+  border: 2px solid #e50914;
+  color: #fff;
+}
+
+.navbar-auth .login-btn:hover {
+  background: #e50914;
+  color: white;
+}
+
+.navbar-auth .signup-btn {
+  background: linear-gradient(135deg, #e50914, #f40612);
+  color: white;
+  border: none;
+}
+
+.navbar-auth .signup-btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+/* Logout button */
+.logout-btn {
+  background: transparent;
+  border: 2px solid #e50914;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #e50914;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .navbar-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .navbar-auth {
+    justify-content: center;
+  }
+} 

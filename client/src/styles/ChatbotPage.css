@@ -1,0 +1,221 @@
+/* ===== Chatbot Page Layout ===== */
+.chat-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 95%; /* 🧩 slightly wider */
+  max-width: 1600px; /* 🧩 supports bigger screens */
+  height: 95vh; /* 🧩 taller page */
+  margin: 2rem auto;
+  background: rgba(10, 10, 10, 0.88);
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== Header ===== */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1f1f1f;
+  color: white;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #333;
+}
+
+.chat-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.back-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.back-btn:hover {
+  color: #00c6ff;
+}
+
+/* ===== Chat Messages ===== */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ===== Message Bubbles ===== */
+.message-row {
+  display: flex;
+}
+.message-row.user {
+  justify-content: flex-end;
+}
+.message-row.bot {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 85%;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: #eee;
+  background: #2d2d2d;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.message-row.user .bubble {
+  background: #0078ff;
+  color: white;
+}
+
+/* ===== Make grid messages full width ===== */
+.bubble:has(.card-grid) {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* ===== Grid Layout (Cards 5 per row) ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* ===== Shared Card Style ===== */
+.movie-card,
+.book-card,
+.music-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1c1c1c;
+  border-radius: 14px;
+  padding: 10px;
+  text-align: center;
+  color: #eee;
+  width: 180px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.movie-card:hover,
+.book-card:hover,
+.music-card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 14px rgba(0, 198, 255, 0.5);
+}
+
+/* ===== Image sizing per type ===== */
+.movie-card img,
+.music-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* 🧩 Book card slightly smaller height to align perfectly */
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* ===== Chat Input ===== */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background: #1f1f1f;
+  border-top: 2px solid #333;
+}
+
+.chat-textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: #2a2a2a;
+  color: white;
+  font-size: 1rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  height: 3.2rem;
+}
+
+.send-btn {
+  background: #0078ff;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+.send-btn:hover {
+  background: #00c6ff;
+}
+
+/* ===== Scrollbar ===== */
+.chat-messages::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 5px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card-grid > div {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInCards 0.4s ease forwards;
+}
+@keyframes fadeInCards {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
