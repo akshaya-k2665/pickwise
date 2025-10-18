@@ -177,7 +177,7 @@ if (!MONGO_URI) {
 }
 
 /* =====================================================
-   ✅ Serve React frontend (Vite build for Render)
+   ✅ Serve React frontend (Vite dist folder for Render)
    ===================================================== */
 const clientDistPath = path.join(__dirname, "..", "client", "dist");
 app.use(express.static(clientDistPath));
@@ -186,15 +186,15 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(clientDistPath, "index.html"));
 });
 
-
 /* =====================================================
    🚀 SERVER LISTENER
    ===================================================== */
-const PORT = process.env.PORT || 5000; // ✅ Works on Render
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`Serving frontend from: ${clientBuildPath}`);
+  console.log(`Serving frontend from: ${clientDistPath}`);
   console.log(
     `🌍 Frontend origin: ${process.env.CLIENT_ORIGIN || "http://localhost:5173"}`
   );
 });
+
