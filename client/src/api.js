@@ -1,16 +1,24 @@
 // p4/client/src/api.js
 import axios from "axios";
 
-// ===== Base Configuration =====
-const base = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+/* =====================================================
+   ✅ BASE CONFIGURATION — works in both local & deployed
+   ===================================================== */
 
+// Automatically detect environment
+const base =
+  import.meta.env.VITE_API_BASE_URL || window.location.origin || "http://localhost:5000";
+
+// Ensure backend API always uses `/api` prefix
 const API = axios.create({
   baseURL: `${base}/api`,
   withCredentials: true,
   headers: { "Content-Type": "application/json" },
 });
 
-// ===== Automatically Attach JWT Token =====
+/* =====================================================
+   🔐 Automatically attach JWT Token
+   ===================================================== */
 API.interceptors.request.use((config) => {
   try {
     const token = localStorage.getItem("token");
@@ -21,11 +29,15 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// ===== AUTH =====
+/* =====================================================
+   🧩 AUTH
+   ===================================================== */
 export const signup = (data) => API.post("/auth/signup", data);
 export const login = (data) => API.post("/auth/login", data);
 
-// ===== USERS / PREFERENCES =====
+/* =====================================================
+   👤 USER PREFERENCES
+   ===================================================== */
 
 // 🎬 Movies
 export const saveMoviePreferences = async (email, data) => {
@@ -54,29 +66,28 @@ export const getPreferences = (email, type = "movies") => {
   return getMoviePreferences(email);
 };
 
-// ===== SPOTIFY INTEGRATION =====
-
-// 🔑 Get Access Token (optional for diagnostics)
+/* =====================================================
+   🎧 SPOTIFY INTEGRATION
+   ===================================================== */
 export const getSpotifyToken = async () => {
   const res = await API.get("/spotify/token");
   return res.data.accessToken;
 };
 
-// 🎧 Fetch Genres from Spotify
 export const getSpotifyGenres = async () => {
   const res = await API.get("/spotify/genres");
-  return res.data; // [{ id, name, icon }]
+  return res.data;
 };
 
-// 🎶 Get Spotify Recommendations (based on selected genres)
 export const getSpotifyRecommendations = async (genres = []) => {
   const res = await API.post("/spotify/recommendations", { genres });
-  return res.data; // returns tracks
+  return res.data;
 };
 
-// ===== RECOMMENDATIONS =====
+/* =====================================================
+   🎬 RECOMMENDATIONS
+   ===================================================== */
 export const getRecommendations = (email, typeOrOptions = "movies") => {
-  // Backward compatible: if a string is passed, behave as before
   if (typeof typeOrOptions === "string") {
     return API.get(`/recommendations/${email}/${typeOrOptions}`);
   }
@@ -90,26 +101,22 @@ export const getRecommendations = (email, typeOrOptions = "movies") => {
   return API.get(`/recommendations/${email}/${type}`);
 };
 
-// ===== XAI Helpers =====
 export const getRecommendationExplanation = (id, email, type = "movies") =>
   API.get(`/recommendations/${id}/explain`, { params: { email, type } });
 
 export const getGlobalExplanations = (type = "movies") =>
   API.get(`/recommendations/global-explain`, { params: { type } });
 
-// ✅ Unified Fetch with Fallback
 export async function fetchRecommendations(email, type = "movies") {
   try {
     const res = await API.get(`/recommendations/${email}/${type}`);
     if (res.data && res.data.recommendations?.length > 0) {
       return res.data.recommendations;
     }
-
     console.warn(`⚠️ No ${type} recommendations found for ${email}`);
     return [];
   } catch (err) {
     console.error(`❌ Error fetching ${type} recommendations:`, err.message);
-
     const fallback = {
       movies: [
         {
@@ -139,65 +146,46 @@ export async function fetchRecommendations(email, type = "movies") {
         },
       ],
     };
-
     return fallback[type] || [];
   }
 }
 
-// ===== FEEDBACK =====
-
-// 💬 Submit feedback (supports text, like/dislike, or rating)
+/* =====================================================
+   💬 FEEDBACK
+   ===================================================== */
 export const submitFeedback = async (data) => {
-  try {
-    const res = await API.post("/feedback", data);
-    return res.data;
-  } catch (error) {
-    console.error("❌ Error submitting feedback:", error.response?.data || error.message);
-    throw error;
-  }
+  const res = await API.post("/feedback", data);
+  return res.data;
 };
-
-// ⭐ Get feedback stats (average rating, total ratings)
 export const getFeedbackStats = async (contentId) => {
-  try {
-    const res = await API.get(`/feedback/${contentId}`);
-    return res.data; // { averageRating, totalRatings }
-  } catch (error) {
-    console.error("❌ Error fetching feedback stats:", error.response?.data || error.message);
-    throw error;
-  }
+  const res = await API.get(`/feedback/${contentId}`);
+  return res.data;
 };
-// Fetch all reviews for a movie/book/music
 export const getReviews = async (contentId) => {
   const res = await API.get(`/feedback/${contentId}/reviews`);
   return res.data;
 };
 
-
-// ===== MOOD =====
+/* =====================================================
+   😊 MOOD / GROUP / ADMIN / CHAT / TMDB
+   ===================================================== */
 export const saveMood = (userId, data) => API.post(`/mood/${userId}`, data);
-
-// ===== GROUPS =====
 export const createGroup = (data) => API.post("/groupsync", data);
 export const getGroup = (id) => API.get(`/groupsync/${id}`);
 
-// ===== ADMIN =====
 export const updateAlgorithmConfig = (data) =>
   API.put("/admin/algorithm/config", data);
 export const reindexContent = (data) =>
   API.post("/admin/content/reindex", data);
 
-// ===== CHAT =====
 export const sendMessage = (message) =>
   API.post("/chat", { message }).then((res) => res.data);
 
-// ===== TMDB SEARCH =====
 export const searchMovies = async (query) => {
   const res = await fetch(`${base}/api/tmdb?q=${encodeURIComponent(query)}`);
   return res.json();
 };
 
-// ===== CROSS-DOMAIN RECOMMENDATIONS (AI-Powered) =====
 export const getCrossDomainRecommendations = (email, { query, base }) => {
   const params = query
     ? `query=${encodeURIComponent(query)}`
@@ -205,8 +193,9 @@ export const getCrossDomainRecommendations = (email, { query, base }) => {
   return API.get(`/recommendations/cross/${email}?${params}`);
 };
 
-
-// ===== GLOBAL ERROR HANDLER =====
+/* =====================================================
+   ❌ GLOBAL ERROR HANDLER
+   ===================================================== */
 API.interceptors.response.use(
   (res) => res,
   (error) => {
