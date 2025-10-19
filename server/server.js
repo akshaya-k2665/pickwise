@@ -8,8 +8,29 @@ const dotenv = require("dotenv");
 dotenv.config({ path: path.resolve(__dirname, ".env") });
 console.log("🔍 Mongo URI loaded:", process.env.MONGODB_URI);
 
-
 const app = express();
+
+/* =====================================================
+   🩹 Middleware to fix hardcoded localhost API calls
+   ===================================================== */
+app.use((req, res, next) => {
+  // If frontend accidentally calls localhost:5000 — rewrite to Render domain
+  if (req.url.includes("localhost:5000")) {
+    const newUrl = req.url.replace(
+      "http://localhost:5000",
+      "https://pickwise.onrender.com"
+    );
+    console.log(`🔁 Redirecting localhost → ${newUrl}`);
+    req.url = newUrl;
+  }
+
+  // Fix any Origin header from localhost dev
+  if (req.headers.origin && req.headers.origin.includes("localhost:5173")) {
+    req.headers.origin = "https://pickwise.onrender.com";
+  }
+
+  next();
+});
 
 /* =====================================================
    🧩 ROUTE IMPORTS
@@ -33,8 +54,8 @@ const { errorHandler } = require("./middlewares/errorHandler");
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",               // for local dev
-      "https://pickwise.onrender.com"        // for production
+      "http://localhost:5173", // local dev
+      "https://pickwise.onrender.com", // production
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -202,4 +223,3 @@ app.listen(PORT, () => {
     `🌍 Frontend origin: ${process.env.CLIENT_ORIGIN || "http://localhost:5173"}`
   );
 });
-
