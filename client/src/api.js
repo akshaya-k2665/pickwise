@@ -1,15 +1,21 @@
-// p4/client/src/api.js
+// src/api.js
 import axios from "axios";
 
 /* =====================================================
-   ✅ BASE CONFIGURATION — works in both local & deployed
+   ✅ BASE CONFIGURATION — Auto-detect Render or Localhost
    ===================================================== */
 
-// Automatically detect environment
+// Smarter base URL logic — handles localhost and Render automatically
 const base =
-  import.meta.env.VITE_API_BASE_URL || window.location.origin || "http://localhost:5000";
+  import.meta.env.VITE_API_BASE_URL && import.meta.env.VITE_API_BASE_URL.trim() !== ""
+    ? import.meta.env.VITE_API_BASE_URL
+    : (typeof window !== "undefined" && window.location.origin.includes("onrender.com"))
+      ? "https://pickwise.onrender.com"
+      : "http://localhost:5000";
 
-// Ensure backend API always uses `/api` prefix
+console.log("🌍 Using API Base URL:", base); // helpful for debugging
+
+// Create axios instance
 const API = axios.create({
   baseURL: `${base}/api`,
   withCredentials: true,
@@ -53,13 +59,12 @@ export const saveBookPreferences = (email, data) =>
 export const getBookPreferences = (email) =>
   API.get(`/users/preferences/${email}/books`);
 
-// 🎵 Music (Spotify Integrated)
+// 🎵 Music
 export const saveMusicPreferences = (email, data) =>
   API.post(`/users/preferences/${email}/music`, data);
 export const getMusicPreferences = (email) =>
   API.get(`/users/preferences/${email}/music`);
 
-// ✅ Unified Wrapper
 export const getPreferences = (email, type = "movies") => {
   if (type === "books") return getBookPreferences(email);
   if (type === "music") return getMusicPreferences(email);
