@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "set VITE_API_BASE_URL=https://pickwise.onrender.com && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "vite preview --host"
@@ -46,3 +46,4 @@
   "license": "ISC",
   "description": ""
 }
+"// Webhook test" 
